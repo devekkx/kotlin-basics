@@ -34,11 +34,16 @@ val numbers = mutableListOf<Int>()
     val input = readln()
 
 //    Build reversal string
-    val finalString  = buildString {
-        for (i in input.lastIndex downTo 0) {
-            append(input[i])
+    val reversed = reversedString(input)
+    println(reversed)
+    println(reversedString("racecar"))
+}
+
+fun reversedString(stringToReverse: String): String {
+   val finalString = buildString {
+        for (i in stringToReverse.lastIndex downTo 0) {
+            append(stringToReverse[i])
         }
     }
-
-    println(finalString)
+return finalString
 }
