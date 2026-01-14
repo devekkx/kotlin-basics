@@ -61,6 +61,11 @@ abstract class Shape {
     }
 }
 
+sealed interface Shape1 {
+    val area: Float
+    val circumference: Float
+}
+
 data class Rectangle
     (
     val width: Float,
