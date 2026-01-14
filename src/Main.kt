@@ -41,8 +41,8 @@ fun main() {
 
     println(rect1.width)
     println(rect1.height)
-    println("The diagonal is ${rect1.diagonal}")
-    println("The area is ${rect1.area}")
+
+    println(greetMe(Country.GHANA))
 }
 
 //interface Shape {
@@ -64,6 +64,20 @@ abstract class Shape {
 sealed interface Shape1 {
     val area: Float
     val circumference: Float
+}
+
+enum class Country {
+    USA, CANADA, MEXICO, GHANA, GERMANY
+}
+
+fun greetMe(country: Country): String {
+    return when (country) {
+        Country.USA -> "Hello!"
+        Country.CANADA -> "Bonjour!"
+        Country.MEXICO -> "Hola!"
+        Country.GHANA -> "Woezor!"
+        Country.GERMANY -> "Guten Tag!"
+    }
 }
 
 data class Rectangle
