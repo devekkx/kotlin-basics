@@ -31,14 +31,14 @@ val numbers = mutableListOf<Int>()
 
 //    String loop
     println("Enter a string:")
-    val input = readln()
+    val input = readln().toInt()
 
 //    Build reversal string
 //    val reversed = reversedString(input)
 //    println(reversed)
 //    println(reversedString("racecar"))
 //}
-
+//
 //fun reversedString(stringToReverse: String): String {
 //   val finalString = buildString {
 //        for (i in stringToReverse.lastIndex downTo 0) {
@@ -50,17 +50,24 @@ val numbers = mutableListOf<Int>()
 
 
     //Extension function version
+//
+//    val reversed = input.reversed()
+//
+//    println(reversed)
+//
+//    fun String.reversed(): String {
+//        val finalString = buildString {
+//            for (i in lastIndex downTo 0) {
+//                append(this[i])
+//            }
+//        }
+//        return finalString
+//    }
 
-    val reversed = input.reversed()
 
-    println(reversed)
+    // Function overloading
 
-    fun String.reversed(): String {
-        val finalString = buildString {
-            for (i in lastIndex downTo 0) {
-                append(this[i])
-            }
-        }
-        return finalString
+    fun Int.reversed(): Int {
+        return this.toString().reversed().toInt()
     }
 }
