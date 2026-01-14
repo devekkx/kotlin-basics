@@ -63,3 +63,9 @@ data class Rectangle
 
 }
 
+data class Circle(val radius: Float) : Shape {
+    override val area: Float
+        get() = Math.PI.toFloat() * radius * radius
+    override val circumference: Float
+        get() = 2 * Math.PI.toFloat() * radius
+}
