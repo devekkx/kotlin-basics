@@ -45,16 +45,27 @@ fun main() {
     println("The area is ${rect1.area}")
 }
 
-interface Shape {
-    val area: Float
-    val circumference: Float
+//interface Shape {
+//    val area: Float
+//    val circumference: Float
+//}
+
+abstract class Shape {
+    abstract val area: Float
+    abstract val circumference: Float
+
+    var count = 0
+
+    fun inc() {
+        count++
+    }
 }
 
 data class Rectangle
     (
     val width: Float,
     val height: Float
-) : Shape {
+) : Shape() {
     val diagonal = sqrt(width * width + height * height)
     override val area = width * height
 
@@ -63,7 +74,7 @@ data class Rectangle
 
 }
 
-data class Circle(val radius: Float) : Shape {
+data class Circle(val radius: Float) : Shape() {
     override val area: Float
         get() = Math.PI.toFloat() * radius * radius
     override val circumference: Float
