@@ -43,6 +43,21 @@ fun main() {
     println(rect1.height)
 
     println(greetMe(Country.GHANA))
+
+    val stringList = listOf("Kotlin", "Java", "JavaScript", "Python", "C++", "C#")
+    val integers = listOf(1, 2, 3, 4, 5, 6, 7, 8, 9, 10)
+
+    val filteredStrings = stringList.myFilter { currentString ->
+        currentString.length > 3
+    }
+
+    val filteredIntegers = integers.myFilter { currentInt ->
+        currentInt > 5
+    }
+
+    println("Filtered Strings: $filteredStrings")
+    println("Filtered Integers: $filteredIntegers")
+
 }
 
 //interface Shape {
@@ -80,6 +95,10 @@ fun greetMe(country: Country): String {
     }
 }
 
+fun makeNetworkCall(): Result<Int, String> {
+    return Result.Failure("error occurred")
+}
+
 data class Rectangle
     (
     val width: Float,
@@ -98,4 +117,19 @@ data class Circle(val radius: Float) : Shape() {
         get() = Math.PI.toFloat() * radius * radius
     override val circumference: Float
         get() = 2 * Math.PI.toFloat() * radius
+}
+
+fun <T> List<T>.myFilter(predicate: (T) -> Boolean): List<T> {
+    val result = mutableListOf<T>()
+    for (item in this) {
+        if (predicate(item)) {
+            result.add(item)
+        }
+    }
+    return result.toList()
+}
+
+sealed interface Result<out D, out E> {
+    data class Success<D>(val data: D) : Result<D, Nothing>
+    data class Failure<E>(val error: E) : Result<Nothing, E>
 }
